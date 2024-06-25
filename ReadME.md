@@ -1,0 +1,2 @@
+## Instrucciones
+Para usar el codigo primero se ingresa el mensaje que enviara en user1, despues de ingresar el mensaje se mostrar como se envio el mensaje y como user2 lo recibe, despues se debe ingresar la contestacion del user2 y mostrara el mensaje enviado y como user1 lo recibe. El ciclo seguira hasta que uno de los usuarios envie el mensaje "exit".

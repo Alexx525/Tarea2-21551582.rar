@@ -3,7 +3,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/wait.h>
-#define MAX_MSG 100
+#define MAX_MSG 200
 
 void user1_msg(int user1[2], int user2[2])
 {
@@ -14,19 +14,24 @@ void user1_msg(int user1[2], int user2[2])
   close(user2[1]);
 
   while (1)
-  {
+  { 
+    printf("user1: ");
+    
     fgets(msg_out, sizeof(msg_out), stdin);
+    printf("\n");
     write(user1[1], msg_out, strlen(msg_out) + 1);
+
+    
 
     if (strncmp(msg_out, "exit", 4) == 0)
       break;
-    
-    printf("user1: %s\n", msg_out);
     
     read(user2[0], msg_in, MAX_MSG);
 
     if (strncmp(msg_in, "exit", 4) == 0)
       break;
+
+    printf("user1 recibió el mensaje: %s\n", msg_in);
   }
   
   close(user1[1]);
@@ -47,14 +52,18 @@ void user2_msg(int user1[2], int user2[2])
     
     if (strncmp(msg_in, "exit", 4) == 0)
       break;
+
+    printf("user2 recibió el mensaje: %s\n", msg_in);
+    
+    printf("user2: ");
     
     fgets(msg_out, sizeof(msg_out), stdin);
     write(user2[1], msg_out, strlen(msg_out) + 1);
+
+    printf("\n");
     
     if (strncmp(msg_out, "exit", 4) == 0)
       break;
-    
-    printf("user2: %s\n", msg_out);
   }
   
   close(user1[0]);
@@ -91,18 +100,3 @@ int main()
   
   return 0;
 }
-
-# Inicializar Git en el proyecto
-git init
-
-# Añadir todos los archivos
-git add .
-
-# Hacer el commit inicial
-git commit -m "Initial commit"
-
-# Agregar el repositorio remoto (reemplaza con tu URL)
-git remote add origin https://github.com/Alexx525/Tarea2-21551582.rar.git
-
-# Empujar los cambios al repositorio remoto
-git push -u origin master
