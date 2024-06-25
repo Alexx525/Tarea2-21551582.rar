@@ -91,3 +91,18 @@ int main()
   
   return 0;
 }
+
+# Inicializar Git en el proyecto
+git init
+
+# Añadir todos los archivos
+git add .
+
+# Hacer el commit inicial
+git commit -m "Initial commit"
+
+# Agregar el repositorio remoto (reemplaza con tu URL)
+git remote add origin https://github.com/Alexx525/Tarea2-21551582.rar.git
+
+# Empujar los cambios al repositorio remoto
+git push -u origin master
